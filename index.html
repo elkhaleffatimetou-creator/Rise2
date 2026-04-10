@@ -4,6 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<meta name="theme-color" content="#ffffff">
 <title>RISE — Mon Tracker 365</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -16,7 +19,8 @@
   --text:#1a0a0f;--text2:#3d1422;--dim:#a08060;--dim2:#6b4c2a;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#fff;color:var(--text);font-family:'Outfit',sans-serif;min-height:100vh;}
+html{color-scheme:light only;}
+body{background:#ffffff;color:var(--text);font-family:'Outfit',sans-serif;min-height:100vh;-webkit-text-size-adjust:100%;}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 0% 0%,rgba(123,28,58,0.03) 0%,transparent 40%),radial-gradient(ellipse at 100% 100%,rgba(181,134,13,0.03) 0%,transparent 40%);pointer-events:none;z-index:0;}
 .app{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:20px 14px 70px;}
 
@@ -112,34 +116,33 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .regles-ban-txt strong{color:var(–bord);display:block;font-size:12px;margin-bottom:1px;}
 
 /* TASK */
-.task-list{padding:8px;display:flex;flex-direction:column;gap:6px;}
-.task-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;cursor:pointer;border:2px solid var(–border);background:#fff;transition:all 0.15s;user-select:none;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-.task-item:hover{background:rgba(123,28,58,0.03);border-color:rgba(123,28,58,0.2);box-shadow:0 3px 12px rgba(123,28,58,0.1);}
-.task-item.done{background:rgba(22,101,52,0.06);border-color:rgba(22,101,52,0.3);box-shadow:0 2px 8px rgba(22,101,52,0.08);}
+.task-list{padding:8px;display:flex;flex-direction:column;gap:8px;}
+.task-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:14px;cursor:pointer;border:2px solid var(–border);background:#fff;transition:all 0.15s;user-select:none;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.task-item:hover{background:rgba(123,28,58,0.03);border-color:rgba(123,28,58,0.2);}
+.task-item.done{background:rgba(22,101,52,0.06);border-color:rgba(22,101,52,0.3);}
 .task-item.done .tn{text-decoration:line-through;color:var(–dim);}
 .task-item.prayer-item{background:rgba(181,134,13,0.05);border-color:rgba(181,134,13,0.25);}
 .task-item.prayer-item .tn{color:#78350f;}
 .task-item.disabled{opacity:0.35;pointer-events:none;filter:grayscale(0.5);}
 .ripple{position:absolute;border-radius:50%;background:rgba(181,134,13,0.12);transform:scale(0);animation:rip 0.5s ease-out;pointer-events:none;width:44px;height:44px;margin:-22px;}
 @keyframes rip{to{transform:scale(7);opacity:0;}}
-.tc{width:28px;height:28px;border-radius:50%;border:2.5px solid var(–border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;transition:all 0.2s cubic-bezier(.34,1.56,.64,1);background:#fff;}
-.task-item.done .tc{background:linear-gradient(135deg,var(–green),var(–green2));border-color:transparent;color:#fff;transform:scale(1.1);}
+.tc{width:26px;height:26px;min-width:26px;border-radius:50%;border:2.5px solid var(–border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;transition:all 0.2s cubic-bezier(.34,1.56,.64,1);background:#fff;margin-top:2px;}
+.task-item.done .tc{background:linear-gradient(135deg,var(–green),var(–green2));border-color:transparent;color:#fff;}
 .ti{flex:1;min-width:0;}
-.tn{font-size:14px;font-weight:600;color:var(–text);}
-.tm{font-family:‘DM Mono’,monospace;font-size:11px;color:var(–dim);margin-top:2px;}
-.t-dur{font-family:‘DM Mono’,monospace;font-size:10px;color:var(–navy);background:rgba(30,58,95,0.08);padding:2px 7px;border-radius:6px;flex-shrink:0;white-space:nowrap;border:1px solid rgba(30,58,95,0.12);}
+.tn{font-size:14px;font-weight:600;color:var(–text);line-height:1.3;word-break:break-word;}
+.tm{font-family:‘DM Mono’,monospace;font-size:11px;color:var(–dim);margin-top:3px;line-height:1.4;}
+/* Ligne du bas : durée + pts + actions */
+.t-bottom{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap;}
+.t-dur{font-family:‘DM Mono’,monospace;font-size:10px;color:var(–navy);background:rgba(30,58,95,0.08);padding:2px 8px;border-radius:6px;white-space:nowrap;border:1px solid rgba(30,58,95,0.12);}
 .t-pts{font-family:‘Playfair Display’,serif;font-size:13px;font-weight:700;flex-shrink:0;}
 .t-pts.done{color:var(–green);}.t-pts.undone{color:var(–bord2);}.t-pts.dis{color:var(–dim);}
-.t-actions{display:flex;gap:4px;flex-shrink:0;opacity:1;}
-.t-btn{background:none;border:none;cursor:pointer;font-size:16px;padding:5px 7px;border-radius:8px;color:var(–dim);transition:color 0.15s;flex-shrink:0;}
-.t-btn:hover.del{color:var(–bord);}
-.t-btn:hover.edit{color:var(–gold2);}
-.t-btn:hover.info{color:var(–navy);}
+.t-actions{display:flex;gap:4px;flex-shrink:0;opacity:1;margin-left:auto;}
+.t-btn{background:none;border:none;cursor:pointer;font-size:16px;padding:4px 6px;border-radius:8px;color:var(–dim);transition:color 0.15s;flex-shrink:0;}
 @media(hover:hover){
 .t-actions{opacity:0;}
 .task-item:hover .t-actions{opacity:1;}
 }
-.pr-time{font-family:‘DM Mono’,monospace;font-size:10px;color:var(–gold);background:rgba(181,134,13,0.1);padding:2px 7px;border-radius:7px;flex-shrink:0;border:1px solid rgba(181,134,13,0.2);}
+.pr-time{font-family:‘DM Mono’,monospace;font-size:10px;color:var(–gold);background:rgba(181,134,13,0.1);padding:2px 7px;border-radius:7px;white-space:nowrap;border:1px solid rgba(181,134,13,0.2);}
 .task-warn{margin:0 8px 7px;padding:8px 12px;background:rgba(123,28,58,0.05);border:1.5px solid rgba(123,28,58,0.15);border-radius:9px;font-size:12px;color:var(–bord2);display:none;align-items:center;gap:6px;}
 .task-warn.on{display:flex;}
 
@@ -322,6 +325,26 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 .reset-btn{display:block;margin:14px auto 0;background:none;border:1px solid var(–border);color:var(–dim);border-radius:7px;padding:5px 12px;font-family:‘DM Mono’,monospace;font-size:10px;cursor:pointer;transition:all 0.2s;}
 .reset-btn:hover{border-color:var(–bord);color:var(–bord);}
+
+/* ÉVOLUTION */
+.evo-filter{font-family:‘DM Mono’,monospace;font-size:10px;padding:6px 14px;border-radius:20px;border:1.5px solid var(–border);background:#fff;color:var(–dim2);cursor:pointer;transition:all 0.2s;letter-spacing:1px;text-transform:uppercase;}
+.evo-filter.active{background:linear-gradient(135deg,var(–bord),var(–bord2));color:#fff;border-color:transparent;}
+.evo-section{background:#fff;border:2px solid var(–border);border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,0.06);}
+.evo-sec-head{padding:12px 16px;background:linear-gradient(135deg,var(–gold-light),var(–cream));border-bottom:1.5px solid var(–border);display:flex;align-items:center;gap:8px;}
+.evo-sec-icon{font-size:16px;}
+.evo-sec-name{font-family:‘Playfair Display’,serif;font-size:15px;font-weight:700;color:var(–text);flex:1;}
+.evo-sec-avg{font-family:‘DM Mono’,monospace;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.evo-item{padding:12px 16px;border-bottom:1px solid var(–border);display:flex;flex-direction:column;gap:6px;}
+.evo-item:last-child{border-bottom:none;}
+.evo-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.evo-name{font-size:13px;font-weight:600;color:var(–text);flex:1;}
+.evo-pct{font-family:‘Playfair Display’,serif;font-size:18px;font-weight:900;flex-shrink:0;}
+.evo-bar-wrap{height:8px;background:var(–cream);border-radius:4px;overflow:hidden;border:1px solid var(–border);}
+.evo-bar{height:100%;border-radius:4px;transition:width 0.6s ease;}
+.evo-meta{display:flex;justify-content:space-between;font-family:‘DM Mono’,monospace;font-size:10px;color:var(–dim);}
+.evo-trend{font-size:11px;font-weight:600;}
+.evo-regles-note{font-family:‘DM Mono’,monospace;font-size:10px;color:var(–bord2);background:rgba(123,28,58,0.05);padding:6px 10px;border-radius:7px;margin:8px 16px;border:1px solid rgba(123,28,58,0.1);}
+
 @media(max-width:580px){.stats-row{grid-template-columns:1fr 1fr;}.av-quote{display:none;}}
 </style>
 
@@ -409,6 +432,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 <div class="tabs">
   <div class="tab active" onclick="switchTab('daily')">🌅 Ma Journée</div>
   <div class="tab" onclick="switchTab('calendar')">📅 Calendrier</div>
+  <div class="tab" onclick="switchTab('evolution')">📈 Évolution</div>
   <div class="tab" onclick="switchTab('macros')">🥗 Nutrition</div>
   <div class="tab" onclick="switchTab('progress')">📊 Progrès</div>
 </div>
@@ -645,6 +669,15 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <button class="reset-btn" onclick="resetDay()">↺ Réinitialiser le jour (test)</button>
 </div>
 
+<!-- ═══ ÉVOLUTION ═══ -->
+
+<div class="panel" id="panel-evolution">
+  <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--text);margin-bottom:4px;">Évolution par habitude</div>
+  <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);margin-bottom:16px;line-height:1.6;">90 derniers jours · 🟢 Fait · 🔴 Raté · ⬜ Non enregistré · ⬛ Règles (prières uniquement)</div>
+
+  <div id="evoList"></div>
+</div>
+
 </div>
 
 <!-- TOAST -->
@@ -698,8 +731,20 @@ const SK='rise_v6',HK='rise_hist_v6',DK='rise_det_v6';
 // ════════════════════════════════════════
 function defaultData(){
   const now=new Date();
-  const work=[{id:'w1',name:'Rapport de stage — Session de travail',note:'URGENT — rendu dépassé !',pts:40,dur:'2h',done:false,fixed:true}];
-  if(now>=new Date(2026,2,30)) work.push({id:'w2',name:'Révisions (1h minimum)',note:'Cours + exercices',pts:25,dur:'1h',done:false,fixed:true});
+  const soutenance=new Date(2026,3,24); // 24 avril 2026
+  const apres_soutenance=now>soutenance;
+  const work=[];
+  // Rapport de stage : seulement avant la soutenance
+  if(!apres_soutenance){
+    work.push({id:'w1',name:'Rapport de stage — Session de travail',note:'URGENT — rendu dépassé !',pts:40,dur:'2h',done:false,fixed:true});
+  }
+  // Révisions : à partir du 30 mars
+  // Avant soutenance : 1h · Après soutenance : 3h
+  if(now>=new Date(2026,2,30)){
+    const dur=apres_soutenance?'3h':'1h';
+    const note=apres_soutenance?'Révisions post-soutenance · 3h minimum':'Cours + exercices';
+    work.push({id:'w2',name:'Révisions',note,pts:apres_soutenance?40:25,dur,done:false,fixed:true});
+  }
   return{
     prayers:[
       {id:'pr1',name:'Fajr — L\'Aube',note:'Avant le lever du soleil · La plus méritante',pts:30,dur:'10 min',done:false},
@@ -914,13 +959,27 @@ function checkNewDay(){
     data.adhkar.forEach(t=>t.done=false);
     data.matin.forEach(t=>t.done=false);
     data.sante.forEach(t=>t.done=false);
-    // Rebuild work (add revision if 30 march)
+    data.maison.forEach(t=>!t.weekly&&(t.done=false)); // reset non-hebdo seulement
+    // Rebuild work selon la date — garde les tâches manuelles
     const now2=new Date();
-    data.work=data.work.filter(t=>t.fixed||!t.done);
+    const sout2=new Date(2026,3,24);
+    const apres2=now2>sout2;
+    // Remet done à false pour tout le monde
     data.work.forEach(t=>t.done=false);
-    if(now2>=new Date(2026,2,30)&&!data.work.find(t=>t.id==='w2'))
-      data.work.push({id:'w2',name:'Révisions (1h minimum)',note:'Cours + exercices',pts:25,dur:'1h',done:false,fixed:true});
-    data.extra=data.extra.filter(t=>t.keepDaily);
+    // Retire le rapport après la soutenance
+    if(apres2) data.work=data.work.filter(t=>t.id!=='w1');
+    // Révisions : ajoute à partir du 30 mars
+    if(now2>=new Date(2026,2,30)){
+      const rev=data.work.find(t=>t.id==='w2');
+      if(!rev){
+        const dur=apres2?'3h':'1h';
+        const note=apres2?'Révisions · 3h minimum':'Cours + exercices';
+        data.work.push({id:'w2',name:'Révisions',note,pts:apres2?40:25,dur,done:false,fixed:true});
+      } else {
+        if(apres2){rev.dur='3h';rev.pts=40;rev.note='Révisions · 3h minimum';}
+      }
+    }
+    data.extra=data.extra.map(t=>({...t,done:false})); // garde toutes les tâches extra, remet done à false
     data.dayKey=today;
   }
   if(data.weekKey!==week){
@@ -1041,16 +1100,18 @@ function renderSection(key){
     div.innerHTML=`
       <div class="tc">${task.done?'✓':''}</div>
       <div class="ti">
-        <div class="tn">${task.name}${isDisabled?` <span style="font-size:9px;color:var(--dim);"> · suspendue</span>`:''}</div>
+        <div class="tn">${task.name}${isDisabled?` <span style="font-size:10px;color:var(--dim);"> · suspendue</span>`:''}</div>
         <div class="tm">${task.note||''}</div>
-      </div>
-      ${isPrayer&&task.note?`<span class="pr-time">${task.note.split('·')[0].trim()}</span>`:''}
-      ${task.dur&&task.dur!=='—'?`<span class="t-dur">${task.dur}</span>`:''}
-      <span class="t-pts ${isDisabled?'dis':task.done?'done':'undone'}">${isDisabled?'—':task.done?'+'+task.pts:'-'+ps+'%'}</span>
-      <div class="t-actions">
-        <button class="t-btn info" onclick="showImpact('${task.id}','${key}',event)" title="Impact">📊</button>
-        <button class="t-btn edit" onclick="openEdit('${task.id}','${key}',event)" title="Modifier">✏️</button>
-        <button class="t-btn del" onclick="deleteTask('${task.id}','${key}',event)" title="Supprimer">🗑</button>
+        <div class="t-bottom">
+          ${isPrayer&&task.note?`<span class="pr-time">${task.note.split('·')[0].trim()}</span>`:''}
+          ${task.dur&&task.dur!=='—'?`<span class="t-dur">⏱ ${task.dur}</span>`:''}
+          <span class="t-pts ${isDisabled?'dis':task.done?'done':'undone'}">${isDisabled?'—':task.done?'+'+task.pts:'-'+ps+'%'}</span>
+          <div class="t-actions">
+            <button class="t-btn info" onclick="showImpact('${task.id}','${key}',event)" title="Impact">📊</button>
+            <button class="t-btn edit" onclick="openEdit('${task.id}','${key}',event)" title="Modifier">✏️</button>
+            <button class="t-btn del" onclick="deleteTask('${task.id}','${key}',event)" title="Supprimer">🗑</button>
+          </div>
+        </div>
       </div>`;
     if(!isDisabled){
       div.addEventListener('click',e=>{
@@ -1206,7 +1267,8 @@ function updateDate(){
   document.getElementById('dateChip').textContent=`${days[now.getDay()]} ${now.getDate()} ${months[now.getMonth()]} · JOUR ${dayNum}`;
   const sout=new Date(2026,3,24);
   const diff=Math.ceil((sout-now)/86400000);
-  document.getElementById('dlSub').textContent=diff>0?`${diff} jours avant la soutenance · Rapport EN RETARD !`:'Soutenance aujourd\'hui !';
+  if(diff>0) document.getElementById('dlSub').textContent=`${diff} jours avant la soutenance · Rapport EN RETARD !`;
+  else document.getElementById('dlSub').textContent='🎓 Soutenance passée — continue tes révisions !';
 }
 function updateMotivation(){
   const pct=calcPct();
@@ -1272,17 +1334,18 @@ function checkAlerts(){
   const prayers=data.prayers||[];
   const fajrDone=prayers.find(t=>t.id==='pr1')?.done;
   const rapportDone=data.work?.find(t=>t.id==='w1')?.done;
+  const rapportExists=!!data.work?.find(t=>t.id==='w1');
   const allPrayersDone=!data.reglesMode&&prayers.every(t=>t.done);
 
   let msg='',color='var(--amber)';
 
   if(h>=7&&h<10&&!fajrDone&&!data.reglesMode){
     msg='⚠️ Fajr n\'est pas encore coché — il n\'est pas trop tard.';color='var(--bord)';
-  } else if(h>=14&&h<18&&!rapportDone){
+  } else if(h>=14&&h<18&&rapportExists&&!rapportDone){
     msg='📋 Le rapport de stage n\'est pas encore avancé aujourd\'hui.';color='var(--bord)';
   } else if(h>=20&&!allPrayersDone&&!data.reglesMode){
     const missing=prayers.filter(t=>!t.done).map(t=>t.name.split('—')[0].trim());
-    if(missing.length) msg=`🌙 Prières manquantes : ${missing.join(', ')}`;color='var(--gold2)';
+    if(missing.length){msg=`🌙 Prières manquantes : ${missing.join(', ')}`;color='var(--gold2)';}
   } else if(h>=22&&pct<50){
     msg=`⏰ Il est ${h}h et tu es à ${pct}%. Quelques tâches rapides avant de dormir ?`;
   }
@@ -1558,10 +1621,215 @@ function showToast(icon,msg){
 // TABS & RESET
 // ════════════════════════════════════════
 function switchTab(name){
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['daily','calendar','macros','progress'][i]===name));
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['daily','calendar','evolution','macros','progress'][i]===name));
   document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===`panel-${name}`));
-  if(name==='calendar'){renderCalendar();}
+  if(name==='calendar')renderCalendar();
   if(name==='progress'){renderChart();renderBadges();renderHeatmap();}
+  if(name==='evolution')renderEvolution();
+}
+
+// ════════════════════════════════════════
+// ÉVOLUTION PAR HABITUDE
+// ════════════════════════════════════════
+let evoDays=30;
+function setEvoFilter(days){
+  evoDays=days;
+  document.querySelectorAll('.evo-filter').forEach((b,i)=>b.classList.toggle('active',[30,7,90][i]===days));
+  renderEvolution();
+}
+
+function getHabitStats(taskId, sectionKey, days){
+  const now=logicalDate();
+  let done=0,total=0,reglesDays=0;
+  const isPrayer=taskId.startsWith('pr');
+  for(let i=1;i<=days;i++){
+    const d=new Date(now);d.setDate(d.getDate()-i);
+    const k=`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+    const det=details[k];
+    if(!det)continue; // jour non enregistré, on skip
+    // Si c'est une prière et que les règles étaient actives ce jour-là, on skip
+    if(isPrayer&&det.reglesMode){reglesDays++;continue;}
+    total++;
+    const task=det[sectionKey]?.find(t=>t.id===taskId);
+    if(task?.done)done++;
+  }
+  // Aussi compter aujourd'hui
+  if(isPrayer&&data.reglesMode){reglesDays++;}
+  else{
+    total++;
+    const task=data[sectionKey]?.find(t=>t.id===taskId);
+    if(task?.done)done++;
+  }
+  const pct=total>0?Math.round(done/total*100):null;
+  return{done,total,pct,reglesDays};
+}
+
+function getTrend(taskId,sectionKey){
+  const now=logicalDate();
+  const isPrayer=taskId.startsWith('pr');
+  // Compare 7 premiers jours vs 7 derniers jours de la période
+  let recentDone=0,recentTotal=0,oldDone=0,oldTotal=0;
+  for(let i=1;i<=14;i++){
+    const d=new Date(now);d.setDate(d.getDate()-i);
+    const k=`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+    const det=details[k];if(!det)continue;
+    if(isPrayer&&det.reglesMode)continue;
+    const task=det[sectionKey]?.find(t=>t.id===taskId);
+    if(i<=7){recentTotal++;if(task?.done)recentDone++;}
+    else{oldTotal++;if(task?.done)oldDone++;}
+  }
+  const recent=recentTotal>0?recentDone/recentTotal:0;
+  const old=oldTotal>0?oldDone/oldTotal:0;
+  if(recent>old+0.15)return{icon:'📈',label:'En hausse',color:'var(--green)'};
+  if(recent<old-0.15)return{icon:'📉',label:'En baisse',color:'var(--bord2)'};
+  return{icon:'➡️',label:'Stable',color:'var(--gold2)'};
+}
+
+function pctColor(p){
+  if(p===null)return'var(--dim)';
+  if(p>=80)return'var(--green)';
+  if(p>=60)return'var(--gold2)';
+  if(p>=40)return'var(--amber)';
+  return'var(--bord2)';
+}
+function pctBarColor(p){
+  if(p===null)return'var(--border)';
+  if(p>=80)return'linear-gradient(90deg,var(--green),var(--green2))';
+  if(p>=60)return'linear-gradient(90deg,var(--gold),var(--gold2))';
+  if(p>=40)return'linear-gradient(90deg,var(--amber),var(--gold2))';
+  return'linear-gradient(90deg,var(--bord),var(--bord2))';
+}
+
+function renderEvolution(){
+  const container=document.getElementById('evoList');if(!container)return;
+  container.innerHTML='';
+
+  const now=logicalDate();
+  const todayK=todayKey();
+
+  // Toutes les habitudes à afficher (sans les hebdomadaires)
+  const SECTIONS=[
+    {key:'prayers',icon:'🌙',name:'Prières',isPrayer:true},
+    {key:'adhkar',icon:'📿',name:'Adhkar & Coran',isPrayer:false},
+    {key:'matin',icon:'☀️',name:'Routine Matin',isPrayer:false},
+    {key:'sante',icon:'💪',name:'Santé & Corps',isPrayer:false},
+    {key:'work',icon:'📚',name:'Travail & Études',isPrayer:false},
+    {key:'maison',icon:'🏠',name:'Maison & Ménage',isPrayer:false},
+    {key:'extra',icon:'⚡',name:'Tâches libres',isPrayer:false},
+  ];
+
+  // Génère la liste des 90 derniers jours (du plus ancien au plus récent)
+  const TOTAL_DAYS=90;
+  const dayKeys=[];
+  for(let i=TOTAL_DAYS-1;i>=0;i--){
+    const d=new Date(now);d.setDate(d.getDate()-i);
+    dayKeys.push({
+      key:`${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`,
+      isToday:i===0,
+      date:d,
+    });
+  }
+
+  let hasAnyData=false;
+
+  SECTIONS.forEach(sec=>{
+    const tasks=data[sec.key]?.filter(t=>!t.weekly);
+    if(!tasks||!tasks.length)return;
+
+    const secEl=document.createElement('div');
+    secEl.className='evo-section';
+    secEl.innerHTML=`<div class="evo-sec-head"><span class="evo-sec-icon">${sec.icon}</span><span class="evo-sec-name">${sec.name}</span>${sec.isPrayer?'<span style="font-family:\'DM Mono\',monospace;font-size:10px;color:var(--bord2);background:rgba(123,28,58,0.07);padding:2px 8px;border-radius:20px;">🌸 règles = gris</span>':''}</div>`;
+
+    tasks.forEach(task=>{
+      // Calcule le taux global pour affichage
+      let done=0,total=0;
+      const dots=dayKeys.map(({key,isToday,date})=>{
+        let state='empty'; // pas encore de données
+        if(isToday){
+          if(sec.isPrayer&&data.reglesMode){state='regles';}
+          else{
+            const t=data[sec.key]?.find(t=>t.id===task.id);
+            state=t?.done?'done':'miss';
+            total++;if(t?.done)done++;
+          }
+        } else {
+          const det=details[key];
+          if(!det){state='empty';}
+          else if(sec.isPrayer&&det.reglesMode){state='regles';}
+          else{
+            const t=det[sec.key]?.find(t=>t.id===task.id);
+            state=t?.done?'done':'miss';
+            total++;if(t?.done)done++;
+          }
+        }
+        return{state,key,date};
+      });
+
+      const pct=total>0?Math.round(done/total*100):null;
+      const pctColor_=pct===null?'var(--dim)':pct>=80?'var(--green)':pct>=60?'var(--gold2)':pct>=40?'var(--amber)':'var(--bord2)';
+
+      // Tendance 14j
+      const trend=getTrend(task.id,sec.key);
+
+      const itemEl=document.createElement('div');
+      itemEl.className='evo-item';
+
+      // En-tête tâche
+      itemEl.innerHTML=`
+        <div class="evo-item-top">
+          <div class="evo-name">${task.name}</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            ${pct!==null?`<span style="font-family:'DM Mono',monospace;font-size:10px;color:${trend.color};">${trend.icon}</span>`:''}
+            <div class="evo-pct" style="color:${pctColor_}">${pct!==null?pct+'%':'—'}</div>
+          </div>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--dim);margin-bottom:6px;">${pct!==null?`${done}/${total} jours · ${trend.label}`:'Utilise le tracker quelques jours pour voir les données'}</div>`;
+
+      // Grille de points
+      const gridEl=document.createElement('div');
+      gridEl.style.cssText='display:flex;flex-wrap:wrap;gap:3px;margin-bottom:4px;';
+
+      dots.forEach(({state,key,date})=>{
+        const dot=document.createElement('div');
+        const label=`${date.getDate()}/${date.getMonth()+1}`;
+        let bg,title;
+        switch(state){
+          case'done': bg='var(--green)';title=`✓ ${label}`;break;
+          case'miss': bg='var(--bord2)';title=`✗ ${label}`;break;
+          case'regles': bg='#c4b5b5';title=`🌸 ${label} (règles)`;break;
+          default: bg='var(--cream)';title=label;
+        }
+        dot.style.cssText=`width:10px;height:10px;border-radius:2px;background:${bg};flex-shrink:0;cursor:default;`;
+        dot.title=title;
+        if(key===todayK){dot.style.outline='2px solid var(--gold2)';dot.style.outlineOffset='1px';}
+        gridEl.appendChild(dot);
+        if(state!=='empty')hasAnyData=true;
+      });
+
+      itemEl.appendChild(gridEl);
+
+      // Légende
+      itemEl.innerHTML+=`<div style="display:flex;gap:10px;font-family:'DM Mono',monospace;font-size:9px;color:var(--dim);flex-wrap:wrap;">
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--green);margin-right:3px;"></span>Fait</span>
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--bord2);margin-right:3px;"></span>Raté</span>
+        ${sec.isPrayer?`<span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:#c4b5b5;margin-right:3px;"></span>Règles</span>`:''}
+        <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--cream);border:1px solid var(--border);margin-right:3px;"></span>Non enregistré</span>
+      </div>`;
+
+      itemEl.querySelector('.evo-item-top').after(gridEl);
+      secEl.appendChild(itemEl);
+    });
+
+    container.appendChild(secEl);
+  });
+
+  if(!hasAnyData){
+    container.innerHTML=`<div style="text-align:center;padding:40px 20px;color:var(--dim);">
+      <div style="font-size:40px;margin-bottom:12px;">🌱</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;">Commence aujourd'hui !</div>
+      <div style="font-size:13px;line-height:1.6;">Ta carte d'évolution se remplira jour après jour. Chaque point vert est une victoire sur la version d'hier.</div>
+    </div>`;
+  }
 }
 function resetDay(){
   SECTION_KEYS.forEach(k=>{if(k!=='extra')data[k].forEach(t=>t.done=false);});
