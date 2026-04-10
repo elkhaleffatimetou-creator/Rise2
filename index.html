@@ -1140,7 +1140,7 @@ function renderSection(key){
     const div=document.createElement('div');
     div.className='task-item'+(task.done?' done':'')+(isPrayer?' prayer-item':'')+(isDisabled?' disabled':'');
     div.innerHTML=`
-      <div class="tc" style="${task.done?'background:#166534;border-color:#166534;color:#ffffff;box-shadow:0 0 0 1px #166534;':'background:#ffffff;border:3px solid #b5860d;color:transparent;box-shadow:0 0 0 1px #b5860d;'}">${task.done?'✓':''}</div>
+      <div style="width:28px;height:28px;min-width:28px;border-radius:50%;border:3px solid ${task.done?'#166534':'#b5860d'};background:${task.done?'#166534':'#ffffff'};color:${task.done?'#ffffff':'transparent'};display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0;margin-top:2px;">${task.done?'✓':''}</div>
       <div class="ti">
         <div class="tn">${task.name}${isDisabled?` <span style="font-size:10px;color:var(--dim);"> · suspendue</span>`:''}</div>
         <div class="tm">${task.note||''}</div>
